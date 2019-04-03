@@ -54,4 +54,18 @@
         #{topedTime},#{recomedTime},#{spcId},#{zonId},#{sellNum},
         #{website},#{iswxpay},#{isfdfk},#{leixingId},#{kfqq})
     </insert>
+    <select id="queryGoodByGoodId" resultType="java.lang.Integer">
+        select good_id,good_name,customer_id,good_pic,good_pic1,good_pic2,
+        promote_desc,sku_title,sku_cost,sku_price,sku_pmoney,
+        copy_ids,copy_desc,forward_link,order_no,type_id,
+        tags,state,create_time,toped,recomed,
+        toped_time,recomed_time,spc_id,zon_id,sell_num,
+        website,iswxpay,isfdfk,leixing_id,kfqq
+        from wxb_good
+        <where>
+            <if test="goodId > 0">
+                and good_id=#{goodId}
+            </if>
+        </where>
+    </select>
 </mapper>
