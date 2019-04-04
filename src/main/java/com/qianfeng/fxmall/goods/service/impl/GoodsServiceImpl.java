@@ -25,4 +25,9 @@ public class GoodsServiceImpl implements IGoodsService {
       List<WxbGood> goods = goosDAO.queryGoodsByPage(index);
         return goods;
     }
+
+    @Override
+    public void addGoods(WxbGood wxbGood) {
+        goosDAO.addGoods(wxbGood);
+    }
 }

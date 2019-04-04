@@ -185,7 +185,7 @@
                         </li>
 
                         <li>
-                            <a href="http://localhost:8081/cust/goods/add">
+                            <a href="addgoods.jsp">
                                 <i class="icon-pencil"></i>
                                 增加商品
                             </a>
@@ -469,11 +469,10 @@
 
                                     <table id="sample-table-1" class="table table-striped table-bordered table-hover">
                                         <thead>
-                                        <c:forEach var="goods" items="${goodsList}">
                                         <tr>
                                             <th class="center">序 号</th>
-                                            <th class="left">${goods.goodName}</th>
-                                            <th class="center">价 格</th>
+                                            <th class="left">商品名称</th>
+                                            <th class="center">价格</th>
                                             <th class="center">分 成</th>
                                             <th class="center">
                                                 <i class="icon-time bigger-110 hidden-480"></i>
@@ -485,61 +484,38 @@
 
                                             <th class="left">操 作</th>
                                         </tr>
-                                        </c:forEach>
-                                        </thead>
 
+                                        </thead>
                                         <tbody>
 
+                                            <c:forEach var="goods" items="${goodsList}">
+                                                <tr>
+                                                    <td class="center">1</td>
+                                                    <td class="left"><a href="http://localhost:8081/cust/goods/list#" onclick="window.location.href='/cust/goods/add?good_id=14886110'">${goods.goodName}</a></td>
+                                                    <td class="center">${goods.skuCost}</td>
+                                                    <td class="center">${goods.skuPmoney}</td>
+                                                    <td class="center">${goods.createTime}</td>
+                                                    <td class="center">
+                                                        <span class="label label-sm label-primary">未置顶</span>
+                                                    </td>
+                                                    <td class="center">
+                                                        <span class="label label-sm label-grey">未推荐</span>
+                                                    </td>
+                                                    <td class="center">
+                                                    </td>
+                                                    <td class="left">
+                                                        <div class="visible-md visible-lg hidden-sm hidden-xs btn-group" style="align:center">
+                                                            <button class="btn btn-xs btn-primary" onclick="window.location.href='/cust/goods/add?good_id=14886110'">
+                                                                <i class="icon-edit bigger-120"></i>
+                                                            </button>
 
-
-                                        <tr>
-                                            <td class="center">
-                                                1
-                                            </td>
-
-                                            <td class="left"><a href="http://localhost:8081/cust/goods/list#" onclick="window.location.href='/cust/goods/add?good_id=14886110'">${goods.goodName}</a></td>
-                                            <td class="center">1|</td>
-                                            <td class="center">1|</td>
-                                            <td class="center">2016-05-21 19:30:17</td>
-
-                                            <td class="center">
-
-
-                                                <span class="label label-sm label-primary">未置顶</span>
-
-                                            </td>
-
-
-                                            <td class="center">
-
-
-                                                <span class="label label-sm label-grey">未推荐</span>
-
-                                            </td>
-
-                                            <td class="center">
-
-
-
-                                                <span class="label label-sm label-warning">等待审核</span>
-
-                                            </td>
-
-                                            <td class="left">
-                                                <div class="visible-md visible-lg hidden-sm hidden-xs btn-group" style="align:center">
-                                                    <button class="btn btn-xs btn-primary" onclick="window.location.href='/cust/goods/add?good_id=14886110'">
-                                                        <i class="icon-edit bigger-120"></i>
-                                                    </button>
-
-                                                    <button class="btn btn-xs btn-danger" onclick="trashGood('14886110','0')">
-                                                        <i class="icon-trash bigger-120"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-
-                                        </tr>
-
-
+                                                            <button class="btn btn-xs btn-danger" onclick="trashGood('14886110','0')">
+                                                                <i class="icon-trash bigger-120"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
                                         </tbody>
 
                                     </table>

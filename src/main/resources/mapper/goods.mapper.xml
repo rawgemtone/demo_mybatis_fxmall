@@ -41,18 +41,20 @@
      sku_price,sku_pmoney,copy_ids,copy_desc,forward_link,order_no,type_id,tags,state,create_time,
      toped,recomed,toped_time,recomed_time,spc_id,zon_id,sell_num,website,iswxpay,isfdfk,leixing_id,kfqq
     </sql>
-    <select id="queryGoodsByPage" resultMap="baseResultMap">
-        select <include refid="params"/> from wxb_good limit #{index},#{size}
-    </select>
-    <insert id="addGoods" keyProperty="goodId" keyColumn="good_id" useGeneratedKeys="true">
-        insert into wxb_good(<include refid="params"/>)
-        values
-            ( #{goodId},#{goodName},#{customerId},#{goodPic},#{goodPic1},#{goodPic2},
+    <sql id="parames">
+         #{goodId},#{goodName},#{customerId},#{goodPic},#{goodPic1},#{goodPic2},
         #{promoteDesc},#{skuTitle},#{skuCost},#{skuPrice},#{skuPmoney},
         #{copyIds},#{copyDesc},#{forwardLink},#{orderNo},#{typeId},
         #{tags},#{state},#{createTime},#{toped},#{recomed},
         #{topedTime},#{recomedTime},#{spcId},#{zonId},#{sellNum},
-        #{website},#{iswxpay},#{isfdfk},#{leixingId},#{kfqq})
+        #{website},#{iswxpay},#{isfdfk},#{leixingId},#{kfqq}
+    </sql>
+    <select id="queryGoodsByPage" resultMap="baseResultMap">
+        select <include refid="params"/> from wxb_good limit #{index},#{size}
+    </select>
+    <insert id="addGoods" parameterType="com.qianfeng.fxmall.goods.mapper.GoodsMapper">
+        insert into wxb_good(<include refid="params"/>)
+        values (<include refid="parames"/>)
     </insert>
     <select id="queryGoodByGoodId" resultType="java.lang.Integer">
         select good_id,good_name,customer_id,good_pic,good_pic1,good_pic2,

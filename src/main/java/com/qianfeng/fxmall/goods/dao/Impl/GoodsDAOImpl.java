@@ -13,7 +13,8 @@ import java.io.IOException;
 import java.util.List;
 /*将session注入到里面*/
 @Component
-public class GoodsDAOImpl implements IGoosDAO {
+public class GoodsDAOImpl
+        implements IGoosDAO {
     @Autowired
     private SqlSession session;
     @Override
@@ -21,5 +22,11 @@ public class GoodsDAOImpl implements IGoosDAO {
         GoodsMapper mapper = session.getMapper(GoodsMapper.class);
        List<WxbGood> goods = mapper.queryGoodsByPage(page,SystemConstantsUtils.page.PAGE_SIZE);
         return goods;
+    }
+
+    @Override
+    public void addGoods(WxbGood wxbGood) {
+        GoodsMapper mapper = session.getMapper(GoodsMapper.class);
+        mapper.addGoods(wxbGood);
     }
 }

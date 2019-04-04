@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface GoodsMapper {
     List<WxbGood> queryGoodsByPage(@Param("index") int index, @Param("size") int size);
-
+    void addGoods(WxbGood wxbGood);
 }

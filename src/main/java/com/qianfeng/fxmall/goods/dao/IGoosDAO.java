@@ -10,5 +10,5 @@ import java.util.List;
 * */
 public interface IGoosDAO {
     List<WxbGood> queryGoodsByPage(Integer page) throws IOException;
-    /*List<WxbGood> queryAllGoods*/;
+    void addGoods(WxbGood wxbGood);
 }
