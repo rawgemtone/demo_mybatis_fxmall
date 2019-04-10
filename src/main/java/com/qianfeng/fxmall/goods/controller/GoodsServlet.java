@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -37,7 +38,29 @@ public class GoodsServlet extends BaseServlet{
         }
     }
 
-    public void addGoods(HttpServletRequest req, HttpServletResponse resp){
+    public void addGoods(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException {
+        req.setCharacterEncoding("utf-8");
+        String good_name = req.getParameter("good_name");
+        String type_id = req.getParameter("type_id");
+        Long order_no = Long.parseLong(req.getParameter("order_no"));
+        Long sell_num = Long.parseLong(req.getParameter("sell_num"));
+        String promote_desc = req.getParameter("promote_desc");
+        String tags = req.getParameter("tags");
+        String copy_desc = req.getParameter("copy_desc");
+        String forward_link = req.getParameter("forward_link");
+        String gcopy = req.getParameter("gcopy");
+        String zcopy_id = req.getParameter("zcopy_id");
+        String good_id = UUID.randomUUID().toString().substring(0,8);
+        //////////////////////////////////////////////////////
+        String sku_title = req.getParameter("sku_title");
+        String sku_cost = req.getParameter("sku_cost");
+        String sku_pmoney = req.getParameter("sku_pmoney");
+        String sku_price = req.getParameter("sku_price");
+        String sku_str = req.getParameter("sku_str");
+        String service_money = req.getParameter("service_money");
+        String copy_id = req.getParameter("copy_id");
+        String spc_id = req.getParameter("spc_id");
+        String zon_id = req.getParameter("zon_id");
         WxbGood wxbGood = new WxbGood();
         String goodId = UUID.randomUUID().toString().substring(1, 9);
         wxbGood.setGoodId(goodId);

@@ -4,11 +4,28 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:Spring.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+  <listener>
+    <listener-class>com.qianfeng.fxmall.commons.Listener.TomcatinitListener</listener-class>
+  </listener>
   <servlet>
     <servlet-name>goodsServlet</servlet-name>
     <servlet-class>com.qianfeng.fxmall.goods.controller.GoodsServlet</servlet-class>
-  
   </servlet>
+  <servlet>
+    <servlet-name>goodsDetalsServlet</servlet-name>
+    <servlet-class>com.qianfeng.fxmall.goods.controller.GoodsDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>goodsDetalsServlet</servlet-name>
+    <url-pattern>/goodsDetails.do</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>goodsServlet</servlet-name>
     <url-pattern>/goods.do</url-pattern>
